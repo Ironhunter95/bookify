@@ -7,11 +7,18 @@ import { CiSquarePlus } from "react-icons/ci";
 import { FaRegEdit } from "react-icons/fa";
 import { AiOutlineDelete } from "react-icons/ai";
 import { api } from "~/trpc/react";
+
+interface guestType {
+  id: number;
+  name: string;
+  position: string;
+  unit: string;
+  updatedAt?: Date;
+  createdAt?: Date;
+}
 const guest = () => {
   const ctx = api.useUtils();
   const [isOpen, setIsOpen] = useState(false);
-  const [page, setPage] = useState(1);
-  const [query, setQuery] = useState("");
   const [form, setForm] = useState({
     id: -1,
     name: "",
@@ -27,14 +34,13 @@ const guest = () => {
   };
   useEffect(() => {
     setTimeout(() => {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      //@ts-ignore
       void ctx.invalidate(guestList);
     }, 20000);
   });
 
-  const { data: guestList } = api.clients.getAll.useQuery({
-    page: page,
-    query: query,
-  });
+  const { data: guestList } = api.clients.getAll.useQuery();
   const { mutate: deleteGuest } = api.clients.delete.useMutation({
     onSuccess: () => {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -67,7 +73,7 @@ const guest = () => {
       console.error("Error:", opts.message[0]);
     },
   });
-  const editById = (item) => {
+  const editById = (item: guestType) => {
     setForm({
       id: item.id,
       name: item.name,
@@ -81,7 +87,7 @@ const guest = () => {
   const closeModal = () => {
     setIsOpen(false);
   };
-  const submitModal = (data) => {
+  const submitModal = (data: guestType) => {
     if (data.id === -1) {
       addGuest(data);
     } else {
