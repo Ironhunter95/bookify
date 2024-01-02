@@ -52,4 +52,39 @@ export const clientsRouter = createTRPCRouter({
     const totalRows = await ctx.db.clients.count();
     return Math.ceil(totalRows / 12);
   }),
+  delete: publicProcedure
+    .input(
+      z.object({
+        id: z.number(),
+      }),
+    )
+    .mutation(async ({ ctx, input }) => {
+      await ctx.db.clients.delete({
+        where: {
+          id: input.id,
+        },
+      });
+      return true;
+    }),
+  edit: publicProcedure
+    .input(
+      z.object({
+        id: z.number(),
+        name: z.string(),
+        position: z.string(),
+        unit: z.string(),
+      }),
+    )
+    .mutation(async ({ ctx, input }) => {
+      const client = await ctx.db.clients.update({
+        where: { id: input.id },
+        data: {
+          name: input.name,
+          position: input.position,
+          unit: input.unit,
+        },
+      });
+
+      return client;
+    }),
 });
