@@ -7,7 +7,7 @@ const Navbar = () => {
       <nav className="border-b-2 border-gray-200 bg-white dark:bg-gray-900 ">
         <div className="flex w-full flex-wrap items-center justify-between p-4">
           <a
-            href="https://flowbite.com"
+            href="/"
             className="flex items-center space-x-3 rtl:space-x-reverse"
           >
             <img src="/Bookify.png" className="h-8" alt="Bookify Logo" />
