@@ -26,6 +26,8 @@ model reservations {
     arrivalTime DateTime
     notes       String
     allowed     Boolean
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
 }
 
 // Necessary for Next auth
