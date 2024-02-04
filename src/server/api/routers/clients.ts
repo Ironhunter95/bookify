@@ -12,7 +12,6 @@ export const clientsRouter = createTRPCRouter({
       z.object({
         name: z.string(),
         position: z.string(),
-        unit: z.string(),
       }),
     )
     .mutation(async ({ ctx, input }) => {
@@ -20,7 +19,6 @@ export const clientsRouter = createTRPCRouter({
         data: {
           name: input.name,
           position: input.position,
-          unit: input.unit,
         },
       });
 
@@ -63,7 +61,6 @@ export const clientsRouter = createTRPCRouter({
         id: z.number(),
         name: z.string(),
         position: z.string(),
-        unit: z.string(),
       }),
     )
     .mutation(async ({ ctx, input }) => {
@@ -72,7 +69,6 @@ export const clientsRouter = createTRPCRouter({
         data: {
           name: input.name,
           position: input.position,
-          unit: input.unit,
         },
       });
 
