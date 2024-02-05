@@ -137,57 +137,6 @@ const guest = () => {
         {guestList?.map((guest) => (
           <Card id={guest.id} name={guest.name} position={guest.position} />
         ))}
-        {/* <table className="w-full justify-between text-sm">
-          <colgroup>
-            <col />
-            <col />
-            <col />
-            <col />
-            <col />
-            <col />
-          </colgroup>
-          <thead className="dark:bg-gray-700">
-            <tr className="text-center">
-              {headers.map((header, index) => (
-                <th className="p-3" key={index}>
-                  {header}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {guestList?.map((item) => (
-              <tr
-                key={item.id}
-                className="border-b border-opacity-20 text-center odd:bg-gray-100 hover:bg-gray-200 dark:border-gray-700 dark:bg-gray-900"
-              >
-                <td className="p-3">{item.name}</td>
-                <td className="p-3">{item.position}</td>
-                <td className="p-3">{item.unit}</td>
-                <td className="place-content-center place-items-center justify-center p-3 align-middle">
-                  <button className="flex w-full items-center justify-center gap-2  text-xs font-semibold uppercase text-gray-700">
-                    <span
-                      className="hover:scale-110 hover:text-orange-300"
-                      onClick={() => {
-                        editById(item);
-                      }}
-                    >
-                      <FaRegEdit size={16} />
-                    </span>
-                    <span
-                      className="hover:scale-110 hover:text-red-800"
-                      onClick={() => {
-                        deleteGuest({ id: item.id });
-                      }}
-                    >
-                      <AiOutlineDelete size={16} />
-                    </span>
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table> */}
       </div>
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-40" onClose={closeModal}>
@@ -214,14 +163,14 @@ const guest = () => {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-[1000px] transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel className="h-[300px] w-[1000px] transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                   <Dialog.Title
                     as="h3"
                     className="text-lg font-medium leading-6 text-gray-900"
                   >
                     Add a new Guest
                   </Dialog.Title>
-                  <div className="grid grid-cols-1 grid-rows-5 gap-4 p-4 md:grid-cols-2 md:grid-rows-3">
+                  <div className="grid grid-cols-1 grid-rows-1 gap-4 p-4">
                     <div>
                       <label className="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
                         Name
