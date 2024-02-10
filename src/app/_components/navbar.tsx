@@ -67,7 +67,7 @@ const Navbar = () => {
               ref={userDropDown}
               className={`dark:!bg-navy-700  ${
                 isDropdownOpen ? "block" : "hidden"
-              }  absolute -right-2 top-5 h-max w-56 flex-col rounded-[20px] border-2 bg-white bg-cover bg-no-repeat pb-4 dark:text-white dark:shadow-none`}
+              }  absolute -right-2 top-5 z-10 h-max w-56 flex-col rounded-[20px] border-2 bg-white bg-cover bg-no-repeat pb-4 dark:text-white dark:shadow-none`}
             >
               <div className="ml-4 mt-3">
                 <div className="flex items-center gap-2">
