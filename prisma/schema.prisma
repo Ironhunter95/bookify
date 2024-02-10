@@ -22,7 +22,8 @@ model reservations {
     id          Int      @id @default(autoincrement())
     client      clients  @relation(fields: [clientsId], references: [id])
     clientsId   Int
-    arrivalTime DateTime
+    arrivalTime String
+    arrivalDate String
     notes       String
     allowed     Boolean
     createdAt   DateTime @default(now())

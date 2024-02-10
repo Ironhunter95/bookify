@@ -10,18 +10,20 @@ export const reservationsRouter = createTRPCRouter({
   add: publicProcedure
     .input(
       z.object({
-        clientsId: z.number(),
+        client: z.object({ name: z.string(), id: z.number() }),
         allowed: z.boolean().default(false),
-        arrivalTime: z.date(),
+        arrivalDate: z.string().optional(),
+        arrivalTime: z.string().optional(),
         notes: z.string(),
       }),
     )
     .mutation(async ({ ctx, input }) => {
       const client = await ctx.db.reservations.create({
         data: {
-          clientsId: input.clientsId,
+          clientsId: input.client.id,
           allowed: input.allowed,
-          arrivalTime: input.arrivalTime,
+          arrivalTime: input.arrivalTime ?? "",
+          arrivalDate: input.arrivalDate ?? "",
           notes: input.notes,
         },
       });
@@ -64,10 +66,11 @@ export const reservationsRouter = createTRPCRouter({
   edit: publicProcedure
     .input(
       z.object({
-        id: z.number(),
+        id: z.number().optional(),
         allowed: z.boolean(),
-        arrivalTime: z.date(),
-        notes: z.string(),
+        arrivalTime: z.string().optional(),
+        arrivalDate: z.string().optional(),
+        notes: z.string().optional(),
       }),
     )
     .mutation(async ({ ctx, input }) => {
@@ -76,6 +79,7 @@ export const reservationsRouter = createTRPCRouter({
         data: {
           allowed: input.allowed,
           arrivalTime: input.arrivalTime,
+          arrivalDate: input.arrivalDate,
           notes: input.notes,
         },
       });
