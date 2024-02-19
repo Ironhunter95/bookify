@@ -82,6 +82,7 @@ const Navbar = () => {
                 <Link
                   href="/"
                   className="text-sm text-gray-800 dark:text-white hover:dark:text-white"
+                  onClick={() => setIsDropdownOpen(false)}
                 >
                   Home
                 </Link>
@@ -89,6 +90,7 @@ const Navbar = () => {
                 <Link
                   href="/guests"
                   className="mt-3 text-sm text-gray-800 dark:text-white hover:dark:text-white"
+                  onClick={() => setIsDropdownOpen(false)}
                 >
                   Manage Guests
                 </Link>
@@ -96,6 +98,7 @@ const Navbar = () => {
                 <a
                   href=" "
                   className="mt-3 text-sm font-medium text-red-500 hover:text-red-500"
+                  onClick={() => setIsDropdownOpen(false)}
                 >
                   Log Out
                 </a>
