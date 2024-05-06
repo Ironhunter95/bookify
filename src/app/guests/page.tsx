@@ -115,6 +115,7 @@ const guest = () => {
   };
   const submitModal = (data: guestType) => {
     if (data.id === -1) {
+      console.log(data);
       addGuest(data);
     } else {
       editGuest(data);
@@ -134,8 +135,13 @@ const guest = () => {
         </button>
       </div>
       <div className="relative flex flex-wrap gap-5">
-        {guestList?.map((guest) => (
-          <Card id={guest.id} name={guest.name} position={guest.position} />
+        {guestList?.map((guest, index) => (
+          <Card
+            key={index}
+            id={guest.id}
+            name={guest.name}
+            position={guest.position}
+          />
         ))}
       </div>
       <Transition appear show={isOpen} as={Fragment}>
